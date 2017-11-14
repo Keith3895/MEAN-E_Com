@@ -1,0 +1,30 @@
+{
+  "name": "e_com_task",
+  "version": "1.0.0",
+  "description": "task for neutrinos training",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Keith3895/MEAN-E_Com.git"
+  },
+  "author": "Keith Franklin Jathanna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Keith3895/MEAN-E_Com/issues"
+  },
+  "homepage": "https://github.com/Keith3895/MEAN-E_Com#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.13.2",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.1"
+  }
+}
