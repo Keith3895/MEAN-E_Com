@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {ToastService} from '../../services/toast.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +11,25 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   hide = true;
-  constructor() { }
+  constructor(
+  	private toastService: ToastService,
+  	private authService:AuthService,
+  	private router:Router) { }
 
   ngOnInit() {
   }
-
+  onLogin(cred:any){
+  	let user = cred.value;
+  	console.log(user);
+  	this.authService.authenticateUser(user).subscribe(data=>{
+  		if(data.success){
+  			this.authService.storeUserData(data.token,data.user);
+  			this.toastService.show("you are logged in!");
+  			this.router.navigate(['dashboard']);
+  		}else{
+  			this.toastService.show(data.msg);
+  			this.router.navigate(['login']);
+  		}
+  	});
+  }
 }
