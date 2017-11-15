@@ -1,26 +1,33 @@
 
  <mat-card fxLayout="column">
  	<mat-card-title fxFlexAlign='center'>
- 		Login:
+ 		Register
  	</mat-card-title>
  	<form fxLayout="row" fxLayoutGap="20px"
  	 fxLayoutWrap  fxFlexAlign='center'
- 	  fxFlex='flex-basis' >
+ 	  fxFlex='flex-basis' 
+ 	  #registerForm="ngForm" (ngSubmit)="onFormSubmit(registerForm)"
+ 	   >
  	  	<mat-form-field fxFlex='45%' fxFlex.xs='100%'>
-		    <input matInput placeholder="Enter your Name" type='text' >
+		    <input matInput placeholder="Enter your Name" type='text' 
+		     [(ngModel)]="name" name="name">
 		</mat-form-field>
 		<mat-form-field fxFlex='45%' fxFlex.xs='100%'>
-		    <input matInput placeholder="Enter your Email" type='email' >
+		    <input matInput placeholder="Enter your Email" type='email' 
+		    [(ngModel)]="email" name="email">
 		</mat-form-field>
  		<mat-form-field  fxFlex='45%' fxFlex.xs='100%' ngStyle.gt-xs='margin-left: 20%;'>
-		    <input matInput placeholder="Enter your UserName" type='text' >
+		    <input matInput placeholder="Enter your UserName" type='text'
+		     [(ngModel)]="username" name="username">
 		</mat-form-field>
- 		<mat-form-field fxFlex='80%'>
-		    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+ 		<mat-form-field fxFlex='80%' fxFlex.xs='100%'>
+		    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+		    [(ngModel)]="password" name="password">
 		    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
 		</mat-form-field>
-		<mat-form-field fxFlex='80%'>
-		    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+		<mat-form-field fxFlex='80%' fxFlex.xs='100%'>
+		    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+		    [(ngModel)]="reEnterPassword" name="reEnterPassword">
 		    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
 		</mat-form-field>
 		<div fxFlexAlign='center' fxLayout='row' fxFlex='100%'>

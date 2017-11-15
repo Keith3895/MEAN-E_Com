@@ -4,13 +4,16 @@
     <div fxLayout="row"  fxHide [fxHide.gt-xs]="isVisibleOnDesktop()" fxFlex="1 1 auto">
 	    <div fxLayoutAlign='start'>
 	    	<button mat-button color="secondary">Home</button>
-	        <button mat-button color="secondary">DashBoard</button>
+	        <button mat-button color="secondary" routerLink="/dashboard">DashBoard</button>
 	    </div>
 	    <div fxLayoutAlign='center'></div>
         <div fxLayoutAlign='end' style="position: absolute;right: 10px;">
-        	<button mat-button color="secondary" routerLink="/login">Login</button>
-	        <button mat-button color="secondary" routerLink="/register">Register</button>
-	        <button mat-button color="secondary">Logout</button>
+        	<button mat-button color="secondary" routerLink="/login"
+          *ngIf="!authService.loggedIn()" >Login</button>
+	        <button mat-button color="secondary" routerLink="/register"
+          *ngIf="!authService.loggedIn()" >Register</button>
+	        <button mat-button color="secondary"
+          *ngIf="authService.loggedIn()" (click)="onLogout()">Logout</button>
         </div>
 	        
     </div>
