@@ -46,7 +46,10 @@ export class AuthService {
   }
 
   loggedIn(){
-    return tokenNotExpired();    
+    // console.log(this.authToken);
+    // this.loadToken();
+    // console.log();
+    return tokenNotExpired('id_token');    
   }
 
   logout(){
@@ -54,6 +57,14 @@ export class AuthService {
     this.user = null;
     localStorage.clear();
   }
-
+  getProfile(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    let ep = this.prepEndpoint('users/profile');
+    return this.http.get(ep,{headers: headers})
+      .map(res => res.json());
+  }
 
 }

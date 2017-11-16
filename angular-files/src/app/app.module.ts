@@ -22,14 +22,17 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 import {AuthService} from './services/auth.service';
 import {ValidateService} from './services/validate.service';
 import {ToastService} from './services/toast.service';
 import {AuthGuard} from './guards/auth.guard';
+import {ProductService} from './services/product.service';
 
 
 import { RouterModule, Routes } from '@angular/router';
+
 
 
 const routes: Routes = [
@@ -46,7 +49,8 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +74,7 @@ const routes: Routes = [
   AuthService,
   ValidateService,
   ToastService,
+  ProductService,
   AuthGuard],
   bootstrap: [AppComponent]
 })
