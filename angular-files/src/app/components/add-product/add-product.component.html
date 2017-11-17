@@ -1,3 +1,33 @@
-<p>
-  add-product works!
-</p>
+<div fullscreen>
+  <mat-card fxLayout='column'>
+    <mat-card-title fxFlexAlign='center'>
+      Add a Product.
+    </mat-card-title>
+    <form fxLayout="row" fxLayout.xs="column" fxLayoutGap='10px' 
+    fxFlex='flex-basis' 
+    #productForm='ngForm' (ngSubmit)="AddProduct(productForm)" >
+      <mat-form-field fxFlex="45%" fxFlex.xs="100%">
+        <input matInput placeholder="Product Name" type='text' 
+        [(ngModel)]="Pname" name="Pname">
+      </mat-form-field>
+      <mat-form-field fxFlex="35%" fxFlex.xs='100%'>
+        <input matInput placeholder="Amount" type="number"
+         class="example-right-align"  >
+        <span matPrefix>&#8377;&nbsp;</span>
+        <span matSuffix>.00</span>
+      </mat-form-field> 
+      <mat-form-field fxFlex="45%" fxFlex.xs="100%">
+        <input matInput placeholder="Total inStock" type='text' 
+        [(ngModel)]="stock" name="stock">
+        <mat-hint align="end">number of product in stock</mat-hint>
+      </mat-form-field>
+      <mat-form-field fxFlex="100%">
+        <input matInput placeholder="Upload File" type="text"
+         class="example-right-align"  value="{{fileup}}">
+         <mat-icon matSuffix>folder</mat-icon>
+         <input type="file" id='test' #ff
+          class="fileUp" (change)="test(ff)">
+      </mat-form-field> 
+    </form>
+  </mat-card>
+</div>

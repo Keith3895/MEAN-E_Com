@@ -4,17 +4,17 @@
 
   <mat-sidenav #sidenav class="sidenav" align='end' >
     <div fxLayout="column">
-      <button mat-button color="primary">Primary</button>
-      <button mat-button color="primary">Primary</button>
+      <button mat-button color="secondary">Home</button>
+      <button mat-button color="secondary" routerLink="/dashboard">DashBoard</button>
     </div>
   </mat-sidenav>
   <mat-toolbar fxLayout="row" color='primary'>
   <mat-toolbar-row >
-    <span >Custom Toolbar</span>
+    <span >E-Com Site</span>
     <div fxLayout="row"  fxHide [fxHide.gt-xs]="isVisibleOnDesktop()" fxFlex="1 1 auto">
       <div fxLayoutAlign='start'>
         <button mat-button color="secondary">Home</button>
-          <button mat-button color="secondary" routerLink="/dashboard">DashBoard</button>
+        <button mat-button color="secondary" routerLink="/dashboard">DashBoard</button>
       </div>
       <div fxLayoutAlign='center'></div>
         <div fxLayoutAlign='end' style="position: absolute;right: 10px;">
