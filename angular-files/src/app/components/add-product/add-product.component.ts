@@ -36,8 +36,8 @@ export class AddProductComponent implements OnInit {
     productform.value.fileList=this.fileList;
     productform=productform.value;
     var usr=localStorage.getItem('user') ;
-    usr=JSON.parse(usr);
-    productform.author=usr._id;
+    usr=JSON.parse(usr)._id;
+    productform.author=usr;
     console.log(productform);
     if(!this.validateService.validateAddProductPrice(productform)){
       this.toastService.show("please fill the price");

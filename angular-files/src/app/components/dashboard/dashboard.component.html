@@ -1,1 +1,13 @@
-<h1>dashboard</h1>
+<div *ngIf='isBuyer()'>
+    <app-buyer></app-buyer>
+</div>
+<div *ngIf='!isBuyer()'>
+    <app-seller></app-seller>
+</div>
+
+
+<div [ngSwitch]="isBuyer()">
+    <div *ngSwitchCase="true"></div>
+    <div *ngSwitchCase="false"></div>
+    <div *ngSwitchDefault></div>
+</div>

@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -34,6 +35,8 @@ import {ProductService} from './services/product.service';
 
 
 import { RouterModule, Routes } from '@angular/router';
+import { BuyerComponent } from './components/dashboard/buyer/buyer.component';
+import { SellerComponent } from './components/dashboard/seller/seller.component';
 
 
 
@@ -54,6 +57,8 @@ const routes: Routes = [
     NavbarComponent,
     DashboardComponent,
     AddProductComponent,
+    BuyerComponent,
+    SellerComponent,
 
   ],
   imports: [
@@ -72,7 +77,8 @@ const routes: Routes = [
     MatInputModule,
     MatCardModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCheckboxModule
     
   ],
   exports: [ RouterModule ],

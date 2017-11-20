@@ -11,6 +11,7 @@ import {ToastService} from '../../services/toast.service'
 })
 export class RegisterComponent implements OnInit {
   hide=true;
+  buyer=false;
   constructor(
   	private authService:AuthService,
   	private router:Router,
@@ -22,7 +23,7 @@ export class RegisterComponent implements OnInit {
   onFormSubmit(userForm: any) {
     console.log(userForm.value);
     const user = userForm.value;
-
+    console.log(this.buyer);
     if(!this.validateService.validateRegister(user)){
       this.toastService.show("Please fill all the fields");
       return false;
