@@ -9,6 +9,7 @@ const config 		= require('./config/database');
 require('dotenv').config();
 
 const users = require('./routes/users');
+const seller= require('./routes/seller');
 
 
 // Connect To Database
@@ -33,7 +34,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users', users);
-
+app.use('/seller', seller);
 // Index Route
 app.get('/', (req, res) => {
   res.send('Invalid Endpoint');

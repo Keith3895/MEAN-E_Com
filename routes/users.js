@@ -46,7 +46,7 @@ router.post('/authenticate',(req,res,next)=>{
 					success:true,
 					token:'JWT '+token,
 					user:{
-						name:user.name
+						_id:user._id
 					}
 				});
 			}else{

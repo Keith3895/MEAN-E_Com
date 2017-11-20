@@ -20,6 +20,15 @@
 		    <input matInput placeholder="Enter your UserName" type='text'
 		     [(ngModel)]="username" name="username">
 		</mat-form-field>
+		<!-- <mat-form-field  > -->
+			<mat-checkbox class="example-margin" 
+			[(ngModel)]="buyer" name='buyer'
+			fxFlex='20%' fxFlex.xs='100%' ngStyle.gt-xs='margin-left: 20%;'>
+			Seller
+			</mat-checkbox>
+		<!-- </mat-form-field> -->
+		      
+
  		<mat-form-field fxFlex='80%' fxFlex.xs='100%'>
 		    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
 		    [(ngModel)]="password" name="password">

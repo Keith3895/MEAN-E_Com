@@ -21,4 +21,16 @@ export class ValidateService {
       return true;
     }
   }
+  validateAddProductPrice(Product){
+    if(Product.price)
+      return true;
+    else
+    return false;
+  }
+  validateAddProductSock(Product){
+    if(Product.stock)
+      return true;
+    else
+      return false;
+  }
 }
