@@ -6,7 +6,6 @@ const upload  = multer({ dest: 'public/images/' }).single('file');
 const Product = require('../models/product');
 
 router.post('/addProduct',(req,res,next)=>{
-    console.log(req.body);
     Product.AddProduct(req.body,(err,product)=>{
         if(err) res.json({success:false,msg:err});
         else 
@@ -19,6 +18,7 @@ router.post('/upload', (req, res) =>{
              res.json({error_code:1,err_desc:err});
              return;
         }
+        req.file.path=req.file.path.replace('public',"");
         res.json({error_code:0,err_desc:null,fileName:req.file.path});         
     });
 });

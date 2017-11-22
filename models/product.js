@@ -22,3 +22,9 @@ module.exports.getProductsbyUser= (userId,callback)=>{
 module.exports.AddProduct = (product,callback)=>{
     Product.create(product,callback);
 }
+module.exports.getAll = (callback)=>{
+    Product.find({}).populate({
+        path: 'author',
+        model:'User'
+    }).exec(callback);
+}

@@ -10,8 +10,8 @@ require('dotenv').config();
 
 const users = require('./routes/users');
 const seller= require('./routes/seller');
-
-
+const buyer = require('./routes/buyer');
+const cart  = require('./routes/cart');
 // Connect To Database
 mongoose.connect(config.database);
 // On Connection
@@ -32,9 +32,11 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')(passport);
-
+// routes
 app.use('/users', users);
 app.use('/seller', seller);
+app.use('/buyer', buyer);
+app.use('/cart', cart);
 // Index Route
 app.get('/', (req, res) => {
   res.send('Invalid Endpoint');
