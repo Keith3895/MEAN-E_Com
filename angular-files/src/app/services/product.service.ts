@@ -14,6 +14,13 @@ export class ProductService {
     return this.http.post(ep,Product,{headers: headers})
       .map(res => res.json());
   }
+  AllProduct(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    let ep = this.prepEndpoint('buyer/allProducts');
+    return this.http.get(ep,{headers: headers})
+      .map(res => res.json());
+  }
   prepEndpoint(ep){
     if(!this.isDev){
       return ep;

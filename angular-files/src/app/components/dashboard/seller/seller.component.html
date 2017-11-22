@@ -1,3 +1,34 @@
-<p>
-  seller works!
-</p>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav class="example-sidenav" mode='side' opened="{{!isMobileView}}">  
+        <ul class="side-nav-btn">
+          <li routerLink="/addProduct">
+            <i class="material-icons">shopping_cart</i>
+            <p>Cart</p>
+          </li>
+          <li>
+              <i class="material-icons">mode_edit</i>
+              <p>Edit Address</p>
+          </li>
+          <li>
+              <i class="material-icons">history</i>
+              <p>history</p>
+          </li>
+          <li>
+              <i class="material-icons">assistant_photo</i>
+              <p>order status</p>
+          </li>
+        </ul>
+        
+    </mat-sidenav>
+  
+    <div class="example-sidenav-content">  
+      <div>
+          <mat-icon (click)="sidenav.toggle(hide);hide=!hide;" >
+            <i class="material-icons" *ngIf='hide'>view_headline</i>   
+            <i class="material-icons" *ngIf='!hide' >close</i>     
+          </mat-icon>
+      </div>
+    </div>
+  
+  </mat-sidenav-container>
+  

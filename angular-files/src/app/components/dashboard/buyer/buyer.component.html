@@ -1,13 +1,31 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav class="example-sidenav" mode=push >
-    Jolly good!
+  <mat-sidenav #sidenav class="example-sidenav" mode='side' opened="{{!isMobileView}}">  
+      <ul class="side-nav-btn">
+        <li routerLink="/addProduct">
+            <i class="material-icons">add</i>
+          <p>add Product</p>
+        </li>
+        <li>
+            <i class="material-icons">mode_edit</i>
+            <p>Edit Product</p>
+        </li>
+        <li>
+            <i class="material-icons">system_update_alt</i>
+            <p>update Stock</p>
+        </li>
+        <li>
+            <i class="material-icons">person_add</i>
+            <p>Edit User Profile</p>
+        </li>
+      </ul>
+      
   </mat-sidenav>
 
-  <div class="example-sidenav-content">
-    
+  <div class="example-sidenav-content">  
     <div>
-        <mat-icon (click)="sidenav.open()">
-          <i class="material-icons">chevron_right</i>
+        <mat-icon (click)="sidenav.toggle(hide);hide=!hide;" >
+          <i class="material-icons" *ngIf='hide'>view_headline</i>   
+          <i class="material-icons" *ngIf='!hide' >close</i>     
         </mat-icon>
     </div>
   </div>

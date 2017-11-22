@@ -1,0 +1,7 @@
+.totalContainer{
+    margin: 20px;
+    float: right;
+}
+.totalContainer div{
+    margin-bottom: 5px;
+}
