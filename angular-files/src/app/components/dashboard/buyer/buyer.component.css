@@ -3,10 +3,7 @@
    height: 100%;
    width: 100%;
 }
-.sidnav{
-    background: #424242;
-    flex-wrap: wrap;
-}
+
 .test{
     background: #424242;
     color: white;
@@ -14,4 +11,34 @@
 }
 test:hover{
     background: rgba(51, 50, 50, 0.6);
+}
+.example-sidenav{
+    background: #424242;
+    /* min-width: 20vw; */
+}
+.example-container .mat-icon{
+    background: #3f50b5;
+    padding: 8px;
+    /* transition: 1s cubic-bezier(0.19, 0.83, 0.85, 0.32); */
+    transition: pulse 2.25s cubic-bezier(.66,0,0,1);
+}
+
+.side-nav-btn{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.side-nav-btn li{
+    padding: 10px 40px;
+    text-align: center;
+    border-bottom: 1px solid white;
+}
+.side-nav-btn li p{
+    margin-top:10px;
+}
+.side-nav-btn li:hover{
+    cursor: pointer;
+    background:rgba(169, 169, 169, 0.32); 
 }

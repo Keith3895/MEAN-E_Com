@@ -19,6 +19,7 @@ router.post('/upload', (req, res) =>{
              res.json({error_code:1,err_desc:err});
              return;
         }
+        req.file.path=req.file.path.replace('public',"");
         res.json({error_code:0,err_desc:null,fileName:req.file.path});         
     });
 });

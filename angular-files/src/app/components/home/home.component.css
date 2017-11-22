@@ -1,0 +1,22 @@
+.card-title{
+    font-weight: 800;
+    font-size: 1em;
+    margin: 5px;
+    width:100%;
+}
+app-home .mat-icon-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.price p{
+    font-size: .8em;
+    margin: 5px;
+}
+.mat-card-header-text{
+    margin: 0px !important;
+}
+.mat-card-subtitle{
+    margin-bottom: 10px !important;
+    padding-left: 2px;
+}
