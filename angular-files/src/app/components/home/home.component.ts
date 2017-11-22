@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import {ToastService} from '../../services/toast.service';
 import { Router } from '@angular/router';
+import { CartService} from '../../services/cart.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private toastService : ToastService,
-    private router : Router
+    private router : Router,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
@@ -34,5 +36,9 @@ export class HomeComponent implements OnInit {
     this.toastService.test=product;
     // this._router.navigate(['SecondComponent', {p1: this.property1, p2: property2 }]);
     
+  }
+  addItem(product){
+    
+    this.cartService.addToCart(product,1);
   }
 }

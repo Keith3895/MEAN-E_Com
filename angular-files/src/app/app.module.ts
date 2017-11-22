@@ -37,6 +37,7 @@ import {ValidateService} from './services/validate.service';
 import {ToastService} from './services/toast.service';
 import {AuthGuard} from './guards/auth.guard';
 import {ProductService} from './services/product.service';
+import {CartService} from './services/cart.service';
 import { CartComponent } from './components/cart/cart.component';
 
 
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'productDetail/:id', component: ProductDetailComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'cart', component: CartComponent },
   { path: 'dashboard', component: DashboardComponent ,canActivate:[AuthGuard]},
   { path: 'addProduct', component: AddProductComponent ,canActivate:[AuthGuard]}
 ];
@@ -87,7 +89,8 @@ const routes: Routes = [
     MatCardModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule
     
   ],
   exports: [ RouterModule ],
@@ -96,6 +99,7 @@ const routes: Routes = [
   ValidateService,
   ToastService,
   ProductService,
+  CartService,
   AuthGuard],
   bootstrap: [AppComponent]
 })
