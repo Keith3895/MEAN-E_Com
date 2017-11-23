@@ -28,3 +28,6 @@ module.exports.getCart= (id,callback)=>{
 module.exports.removeCart= (id,callback)=>{
     Cart.remove({author:id},callback);
 }
+module.exports.removeItem = (params,callback)=>{
+    Cart.remove(params,callback);
+}

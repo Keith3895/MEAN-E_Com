@@ -3,6 +3,7 @@ import {ProductService} from '../../services/product.service';
 import {ToastService} from '../../services/toast.service';
 import { Router } from '@angular/router';
 import { CartService} from '../../services/cart.service';
+import {AuthService} from '../../services/auth.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
     private productService: ProductService,
     private toastService : ToastService,
     private router : Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private authService : AuthService
   ) { }
 
   ngOnInit() {
@@ -38,7 +40,14 @@ export class HomeComponent implements OnInit {
     
   }
   addItem(product){
-    
     this.cartService.addToCart(product,1);
+  }
+  checkSeller(){
+    if(this.authService.loggedIn()){
+      this.authService.loadToken();
+      console.log(this.authService.user.buyer);
+      return this.authService.user.buyer;
+    }else
+    return false;
   }
 }

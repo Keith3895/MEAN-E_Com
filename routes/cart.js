@@ -23,4 +23,15 @@ router.post('/EmptyCart',(req,res)=>{
         res.json({success:true,msg:status});
     });
 });
+router.post('/removeItem',(req,res)=>{
+    cart.removeItem({
+        author:req.body.user,
+        product: req.body.id,
+        index:req.body.index
+    },(err,status)=>{
+        if(err)res.json({success:false,msg:err});
+        else
+        res.json({success:true,msg:status});
+    })
+});
 module.exports=router;

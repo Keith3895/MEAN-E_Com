@@ -65,4 +65,27 @@ export class CartService {
     return this.http.post(ep,{id:this.authService.user._id},{headers: headers})
       .map(res => res.json());
   }
+  removeItem(item){
+    console.log(this.cartContent);
+    this.cartContent=this.cartContent.filter((data)=>{
+      return  data.index!=item.index;
+    });
+    console.log(this.cartContent);
+    if(this.authService.loggedIn())
+      this.removeItemServer(item).subscribe(data=>{
+        if(data.success){
+          console.log(data.msg);
+        }
+      });
+  }
+  removeItemServer(item){
+    let headers = new Headers();
+    headers.append('Content-type','application/json');
+    this.authService.loadToken();
+    headers.append('Authorization', this.authService.authToken);
+    let ep = this.authService.prepEndpoint('cart/removeItem');
+    let removeDetails={id:item.product._id,index:item.index,user:this.authService.user._id};
+    return this.http.post(ep,removeDetails,{headers: headers})
+      .map(res => res.json());
+  }
 }
