@@ -6,6 +6,7 @@ import {AuthService} from './auth.service';
 @Injectable()
 export class CartService {
   cartContent: Cart[]=[];
+  Total=0;GTotal=0;
   constructor(
     private authService : AuthService,
     private http:Http
@@ -16,8 +17,9 @@ export class CartService {
       product:product,
       quantity: qty,
       Price:product.price};
+      this.Total +=product.price;
+      this.GTotal=this.Total;
     
-      
     if(this.authService.loggedIn()){
       this.retriveCart().subscribe(data=>{
         if(data.success){
@@ -86,6 +88,15 @@ export class CartService {
     let ep = this.authService.prepEndpoint('cart/removeItem');
     let removeDetails={id:item.product._id,index:item.index,user:this.authService.user._id};
     return this.http.post(ep,removeDetails,{headers: headers})
+      .map(res => res.json());
+  }
+  Buy(){
+    let headers = new Headers();
+    headers.append('Content-type','application/json');
+    this.authService.loadToken();
+    headers.append('Authorization', this.authService.authToken);
+    let ep = this.authService.prepEndpoint('cart/Buy');
+    return this.http.post(ep,{id:this.authService.user._id},{headers: headers})
       .map(res => res.json());
   }
 }

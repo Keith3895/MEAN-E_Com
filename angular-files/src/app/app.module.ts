@@ -21,6 +21,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatListModule} from '@angular/material/list';
 
 
 import { AppComponent } from './app.component';
@@ -102,6 +103,7 @@ const routes: Routes = [
     MatTableModule,
     MatDialogModule,
     MatStepperModule,
+    MatListModule,
     
   ],
   exports: [ RouterModule ],

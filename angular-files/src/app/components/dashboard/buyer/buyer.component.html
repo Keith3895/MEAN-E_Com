@@ -1,23 +1,25 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav class="example-sidenav" mode='side' opened="{{!isMobileView}}">  
-      <ul class="side-nav-btn">
-        <li routerLink="/addProduct">
-            <i class="material-icons">add</i>
-          <p>add Product</p>
+      
+        <ul class="side-nav-btn">
+        <li routerLink="/cart">
+            <i class="material-icons">shopping_cart</i>
+            <p>Cart</p>
         </li>
         <li>
             <i class="material-icons">mode_edit</i>
-            <p>Edit Product</p>
+            <p>Edit Address</p>
         </li>
         <li>
-            <i class="material-icons">system_update_alt</i>
-            <p>update Stock</p>
+            <i class="material-icons">history</i>
+            <p>history</p>
         </li>
         <li>
-            <i class="material-icons">person_add</i>
-            <p>Edit User Profile</p>
+            <i class="material-icons">assistant_photo</i>
+            <p>order status</p>
         </li>
-      </ul>
+        </ul>
+        
       
   </mat-sidenav>
 
@@ -28,6 +30,41 @@
           <i class="material-icons" *ngIf='!hide' >close</i>     
         </mat-icon>
     </div>
+
+
+    <div fxLayout='row'  >
+        <mat-card fxFlex='60%' >
+            <mat-card-title>
+                Cart
+            </mat-card-title>
+            <mat-card-content fxLayout='row' fxLayoutWrap="wrap">
+                <mat-card  fxFlex="40%"
+                *ngFor='let item of cartService.cartContent | slice:0:2;'>
+                    <mat-card-title>{{item.product.Pname}}</mat-card-title>
+                    <img src="http://localhost:8080/{{item.product.fileList.replace('public','')||'test'}}" 
+                    alt="productImage" mat-card-image >
+                    <mat-card-content>
+                        Price: {{item.product.price}}
+                        Stock: {{item.product.stock}}
+                    </mat-card-content>
+                </mat-card> 
+                <a href="">more>></a>
+            </mat-card-content>
+        </mat-card>
+        <mat-card fxFlex='30%'>
+            <mat-card-title>
+                History
+            </mat-card-title>
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item>Item 1</mat-list-item>
+                    <mat-list-item>Item 2</mat-list-item>
+                    <mat-list-item>Item 3</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
   </div>
 
 </mat-sidenav-container>

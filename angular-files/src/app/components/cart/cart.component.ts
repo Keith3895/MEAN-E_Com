@@ -7,7 +7,6 @@ import { BuyBillComponent } from '../buy-bill/buy-bill.component';
 import {Cart} from '../../models/cart';
 import {CartService} from '../../services/cart.service';
 import { AuthService } from '../../services/auth.service';
-import { of } from 'rxjs/observable/of'
 import {Router}  from '@angular/router';
 
 @Component({
@@ -19,8 +18,8 @@ import {Router}  from '@angular/router';
 export class CartComponent implements OnInit {
   
   displayedColumns = ['index', 'product', 'quantity', 'Price','actions'];
-  Total=0;
-  GTotal=0;
+  Total=this.cartService.Total;
+  GTotal=this.cartService.GTotal;
   dataSource:any;  
   constructor(
     private cartService:CartService,
@@ -36,10 +35,7 @@ export class CartComponent implements OnInit {
         if(data.success){
           this.cartService.cartContent=data.msg;
           this.dataSource=new MatTableDataSource(this.cartService.cartContent);
-          for(let i in this.cartService.cartContent){
-              this.Total+=this.cartService.cartContent[i].Price;      
-          }
-          this.GTotal=this.Total;
+          
   
         }
       });
@@ -54,6 +50,7 @@ export class CartComponent implements OnInit {
   emptyCart(){
     this.cartService.emptyCart().subscribe(data=>{
       console.log(data);
+      this.dataSource=new MatTableDataSource(this.cartService.cartContent);
     });
   }
   removeItem(item){
@@ -61,9 +58,6 @@ export class CartComponent implements OnInit {
     this.dataSource=new MatTableDataSource(this.cartService.cartContent);
   }
   openDialog(): void {
-    let dialogRef = this.dialog.open(BuyBillComponent, {
-      
-      
-    });
-    
+    let dialogRef = this.dialog.open(BuyBillComponent, {});
+  }
 }

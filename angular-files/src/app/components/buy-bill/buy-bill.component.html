@@ -1,6 +1,4 @@
-<button mat-raised-button (click)="isLinear = true" id="toggle-linear">Enable linear mode</button>
-
-<mat-horizontal-stepper [linear]="isLinear">
+<mat-horizontal-stepper [linear]='true'>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Fill out your name</ng-template>
@@ -8,7 +6,9 @@
         <input matInput placeholder="Enter Username" formControlName="username" required>
       </mat-form-field>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-raised-button matStepperNext>
+          Next<mat-icon><i class="material-icons">navigate_next</i></mat-icon>
+        </button>
       </div>
     </form>
   </mat-step>
@@ -19,16 +19,35 @@
         <input matInput placeholder="Address" formControlName="secondCtrl" required>
       </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-raised-button matStepperPrevious>
+          <mat-icon><i class="material-icons">navigate_before</i></mat-icon> Back 
+        </button>
+        <button mat-raised-button matStepperNext>
+          Next<mat-icon><i class="material-icons">navigate_next</i></mat-icon>
+        </button>
       </div>
     </form>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    You are now done.
+    You are now done. You will now be redirected to a payment gateway.
+    <mat-card>
+      <mat-card-title>
+        Order Summary.
+      </mat-card-title>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let item of cartService.cartContent">{{item.product.Pname}}</li>
+        </ul>
+        <strong>Bill Ammount:</strong> {{cartService.GTotal}}
+      </mat-card-content>
+    </mat-card>
+
     <div>
-      <button mat-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperPrevious>
+        <mat-icon><i class="material-icons">navigate_before</i></mat-icon> Back 
+      </button>
+      <button mat-raised-button (click)='done()' color="accent">Pay</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

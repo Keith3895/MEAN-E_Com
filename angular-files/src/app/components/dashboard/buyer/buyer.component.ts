@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {ObservableMedia, MediaChange} from '@angular/flex-layout';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-buyer',
@@ -12,7 +13,8 @@ export class BuyerComponent implements OnInit {
   hide:Boolean;
   isMobileView:Boolean;
   
-  constructor(public media:ObservableMedia) { }
+  constructor(public media:ObservableMedia,
+  public cartService:CartService) { }
 
   ngOnInit() {
     this.isMobileView = (this.media.isActive('xs') || this.media.isActive('sm'));
@@ -21,6 +23,11 @@ export class BuyerComponent implements OnInit {
       this.hide = this.isMobileView;
     });
     this.hide = this.isMobileView;
+    this.cartService.retriveCart().subscribe((data)=>{
+      if(data.success){
+        this.cartService.cartContent=data.msg;
+      }
+    });
   }
 
 }

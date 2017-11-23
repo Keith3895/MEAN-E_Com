@@ -1,7 +1,7 @@
-<div *ngIf='isBuyer()'>
+<div *ngIf='!isBuyer()'>
     <app-buyer></app-buyer>
 </div>
-<div *ngIf='!isBuyer()'>
+<div *ngIf='isBuyer()'>
     <app-seller></app-seller>
 </div>
 

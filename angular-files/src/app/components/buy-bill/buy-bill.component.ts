@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {ToastService} from '../../services/toast.service';
 import {Router} from '@angular/router';
+import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-buy-bill',
   templateUrl: './buy-bill.component.html',
@@ -19,17 +20,32 @@ export class BuyBillComponent implements OnInit {
     private toastService: ToastService,
   	private authService:AuthService,
     private router:Router,
-    private _formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
-    // this.dialogRef.close();    
-    this.firstFormGroup = this._formBuilder.group({
-      username: ['', Validators.required]
+    let username= this.authService.user?this.authService.user.username:'';
+    this.firstFormGroup = this.formBuilder.group({
+      username: [username, Validators.required]
     });
-    this.secondFormGroup = this._formBuilder.group({
+    this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
   }
-
+  done(){
+    if(this.authService.loggedIn()){
+      this.cartService.Buy().subscribe(data=>{
+        if(data.success)
+          this.toastService.show('Your Order Is Placed');
+          this.cartService.cartContent=[];
+          this.cartService.Total=this.cartService.GTotal=0;
+          this.router.navigate(['dashboard']);
+      });
+    }else{
+      this.toastService.show('you have to login to continue');
+      this.router.navigate(['login']);
+    }
+    this.dialogRef.close();
+  }
 }
