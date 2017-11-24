@@ -42,3 +42,6 @@ test:hover{
     cursor: pointer;
     background:rgba(169, 169, 169, 0.32); 
 }
+.mat-drawer-content{
+    overflow: initial;
+}

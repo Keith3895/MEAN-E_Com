@@ -1,10 +1,7 @@
 <div></div>
-
-
 <div fxLayout="row" fxLayoutWrap="wrap" *ngIf='products' >
-  <mat-card  fxFlex.xs='100%' fxFlex.sm='33%' fxFlex="25%" 
-  *ngFor='let product of products ' 
-   >
+  <mat-card  fxFlex.xs='100%' fxFlex="25%" 
+  *ngFor='let product of products '>
     <mat-card-header>
       <mat-card-title fxLayout='row' >
         <button mat-icon-button color="warn" >
@@ -31,11 +28,11 @@
       
     </mat-card-content>
     <mat-card-actions fxLayout='row'>
-      <button mat-button (click)='addItem(product)' >
+      <button mat-button (click)='addItem(product)' [disabled]='checkSeller()' >
           <mat-icon><i class="material-icons">add_shopping_cart</i></mat-icon>
         cart
       </button>
-      <button mat-button  >
+      <button mat-button [disabled]='checkSeller()' (click)="addItem(product);openDialog()" >
           <mat-icon><i class="material-icons">shopping_basket</i></mat-icon>
           buy
       </button>

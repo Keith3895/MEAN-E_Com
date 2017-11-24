@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {CartService} from './cart.service';
 import {tokenNotExpired} from 'angular2-jwt';
 @Injectable()
 export class AuthService {
   authToken: any;
   user: any;
   isDev:boolean;
-  constructor(private http:Http) {
+  constructor(private http:Http,private cartService:CartService) {
   	this.isDev = true;
   }
   registerUser(user){
@@ -56,6 +57,8 @@ export class AuthService {
   logout(){
     this.authToken = null;
     this.user = null;
+    this.cartService.cartContent=[];
+    this.cartService.Total=this.cartService.GTotal=0;
     localStorage.clear();
   }
   getProfile(){

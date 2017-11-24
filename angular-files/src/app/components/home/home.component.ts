@@ -3,6 +3,9 @@ import {ProductService} from '../../services/product.service';
 import {ToastService} from '../../services/toast.service';
 import { Router } from '@angular/router';
 import { CartService} from '../../services/cart.service';
+import {AuthService} from '../../services/auth.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { BuyBillComponent } from '../buy-bill/buy-bill.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +18,9 @@ export class HomeComponent implements OnInit {
     private productService: ProductService,
     private toastService : ToastService,
     private router : Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private authService : AuthService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -38,7 +43,17 @@ export class HomeComponent implements OnInit {
     
   }
   addItem(product){
-    
     this.cartService.addToCart(product,1);
+  }
+  checkSeller(){
+    if(this.authService.loggedIn()){
+      this.authService.loadToken();
+      
+      return this.authService.user.buyer;
+    }else
+    return false;
+  }
+  openDialog(): void {
+    let dialogRef = this.dialog.open(BuyBillComponent, {});
   }
 }

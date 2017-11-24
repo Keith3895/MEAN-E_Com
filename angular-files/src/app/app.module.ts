@@ -5,6 +5,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -18,7 +19,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatListModule} from '@angular/material/list';
 
 
 import { AppComponent } from './app.component';
@@ -31,6 +34,8 @@ import { BuyerComponent } from './components/dashboard/buyer/buyer.component';
 import { SellerComponent } from './components/dashboard/seller/seller.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { CartComponent } from './components/cart/cart.component';
+import { BuyBillComponent } from './components/buy-bill/buy-bill.component';
 
 import {AuthService} from './services/auth.service';
 import {ValidateService} from './services/validate.service';
@@ -38,7 +43,7 @@ import {ToastService} from './services/toast.service';
 import {AuthGuard} from './guards/auth.guard';
 import {ProductService} from './services/product.service';
 import {CartService} from './services/cart.service';
-import { CartComponent } from './components/cart/cart.component';
+
 
 
 
@@ -52,6 +57,7 @@ const routes: Routes = [
   { path: 'productDetail/:id', component: ProductDetailComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'buy', component: BuyBillComponent },
   { path: 'dashboard', component: DashboardComponent ,canActivate:[AuthGuard]},
   { path: 'addProduct', component: AddProductComponent ,canActivate:[AuthGuard]}
 ];
@@ -70,12 +76,16 @@ const routes: Routes = [
     HomeComponent,
     ProductDetailComponent,
     CartComponent,
+    BuyBillComponent,
+
+    
 
   ],
   imports: [
     BrowserModule,
     NoopAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
      HttpModule ,  
     FlexLayoutModule,
@@ -90,7 +100,10 @@ const routes: Routes = [
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
+    MatStepperModule,
+    MatListModule,
     
   ],
   exports: [ RouterModule ],
