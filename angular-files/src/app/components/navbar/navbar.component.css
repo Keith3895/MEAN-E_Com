@@ -11,7 +11,12 @@
     right: 0;
     z-index: 2;
 }
-
+.mat-drawer{
+    min-width: 280px;
+}
+.active{
+    background: #2e3a80;
+}
 @media (max-width: 600px){
 .side-container{
     margin-top:55px !important; 

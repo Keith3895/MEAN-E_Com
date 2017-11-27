@@ -4,32 +4,48 @@
       <span >E-Com Site</span>
       <div fxLayout="row"  fxHide [fxHide.gt-xs]="isVisibleOnDesktop()" fxFlex="1 1 auto">
         <div fxLayoutAlign='start'>
-          <button mat-button color="secondary" routerLink="/">Home</button>
-          <button mat-button color="secondary" routerLink="/dashboard">DashBoard</button>
+          <button mat-button color="secondary" routerLink="/home" 
+          routerLinkActive="active">Home</button>
+          <button mat-button color="secondary" routerLink="/dashboard" 
+          routerLinkActive="active">DashBoard</button>
         </div>
         <div fxLayoutAlign='center'></div>
           <div fxLayoutAlign='end' style="position: absolute;right: 10px;">
-            <button mat-button color="secondary" routerLink="/cart">
+            <button mat-button color="secondary" routerLink="/cart" 
+            routerLinkActive="active">
                 <i class="material-icons">shopping_cart</i>
             </button>
             <button mat-button color="secondary" routerLink="/login"
-            *ngIf="!authService.loggedIn()" >Login</button>
+            *ngIf="!authService.loggedIn()" routerLinkActive="active">Login</button>
             <button mat-button color="secondary" routerLink="/register"
-            *ngIf="!authService.loggedIn()" >Register</button>
+            *ngIf="!authService.loggedIn()" 
+            routerLinkActive="active" >Register</button>
             <button mat-button color="secondary"
             *ngIf="authService.loggedIn()" (click)="onLogout()">Logout</button>
           </div>
             
       </div>
-      <button fxHide fxShow.xs='true' mat-button color="secondary" (click)="sidenav.toggle()">Open sidenav</button>
+      <button fxHide fxShow.xs='true' mat-button color="secondary" (click)="sidenav.toggle()"
+      style="position:absolute;right:0">
+          <i class="material-icons">view_headline</i>
+      </button>
     </mat-toolbar-row>
   </mat-toolbar>
 <mat-sidenav-container fxFlexFill class="side-container">
 
   <mat-sidenav #sidenav class="sidenav" align='end' >
     <div fxLayout="column">
-      <button mat-button color="secondary">Home</button>
+      <button mat-button color="secondary" routerLink="/">Home</button>
       <button mat-button color="secondary" routerLink="/dashboard">DashBoard</button>
+      <button mat-button color="secondary" routerLink="/cart">
+        <i class="material-icons">shopping_cart</i>
+      </button>
+      <button mat-button color="secondary" routerLink="/login"
+      *ngIf="!authService.loggedIn()" >Login</button>
+      <button mat-button color="secondary" routerLink="/register"
+      *ngIf="!authService.loggedIn()" >Register</button>
+      <button mat-button color="secondary"
+      *ngIf="authService.loggedIn()" (click)="onLogout()">Logout</button>
     </div>
   </mat-sidenav>
   

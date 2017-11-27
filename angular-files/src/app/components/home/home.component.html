@@ -1,42 +1,52 @@
-<div></div>
-<div fxLayout="row" fxLayoutWrap="wrap" *ngIf='products' >
-  <mat-card  fxFlex.xs='100%' fxFlex="25%" 
-  *ngFor='let product of products '>
-    <mat-card-header>
-      <mat-card-title fxLayout='row' >
-        <button mat-icon-button color="warn" >
-          <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-        </button>
-        <p class="card-title"  >{{product.Pname}}</p>
-        
-      </mat-card-title>
-      <mat-card-subtitle >{{product.author.username}}-{{product.author.name}}</mat-card-subtitle>
-      
-    </mat-card-header>
-    <img mat-card-image 
-    src="http://localhost:8080/{{product.fileList.replace('public','')||'test'}}" 
-    alt="Preview Image" (click)="moreInfo(product)">
-    <mat-card-content (click)="moreInfo(product)">
-      <div class="price">
-        <p>
-          Rs.{{product.price}}
-        </p>
-        <p>
-          <strong>Stock: </strong> {{product.stock}}
-        </p>
-      </div>
-      
-    </mat-card-content>
-    <mat-card-actions fxLayout='row'>
-      <button mat-button (click)='addItem(product)' [disabled]='checkSeller()' >
-          <mat-icon><i class="material-icons">add_shopping_cart</i></mat-icon>
-        cart
-      </button>
-      <button mat-button [disabled]='checkSeller()' (click)="addItem(product);openDialog()" >
-          <mat-icon><i class="material-icons">shopping_basket</i></mat-icon>
-          buy
-      </button>
-    </mat-card-actions>
-  </mat-card>
+<div fxLayout='row' fxLayoutWrap='wrap'>
+  <mat-form-field fxFlex='100%' style='margin:3px 5px;'>
+    <input matInput placeholder="Search" type="text" [(ngModel)]="queryString" >
+    <mat-icon matSuffix><i class="material-icons">search</i></mat-icon>
+  </mat-form-field>
 </div>
+<mat-card>
+  <mat-card-title>
+    List of items
+  </mat-card-title>
+  <mat-card-content fxLayout="row" fxLayoutWrap="wrap" *ngIf='products' >
+    <mat-card  fxFlex.xs='100%' fxFlex="25%" 
+    *ngFor='let product of products | pipe:queryString'>
+      <mat-card-header>
+        <mat-card-title fxLayout='row' >
+          <button mat-icon-button color="warn" >
+            <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+          </button>
+          <p class="card-title"  >{{product.Pname}}</p>
+          
+        </mat-card-title>
+        <mat-card-subtitle >{{product.author.username}}-{{product.author.name}}</mat-card-subtitle>
+        
+      </mat-card-header>
+      <img mat-card-image 
+      src="http://localhost:8080/{{product.fileList.replace('public','')||'test'}}" 
+      alt="Preview Image" (click)="moreInfo(product)">
+      <mat-card-content (click)="moreInfo(product)">
+        <div class="price">
+          <p>
+            Rs.{{product.price}}
+          </p>
+          <p>
+            <strong>Stock: </strong> {{product.stock}}
+          </p>
+        </div>
+        
+      </mat-card-content>
+      <mat-card-actions fxLayout='row'>
+        <button mat-button (click)='addItem(product)' *ngIf='!checkSeller()' >
+            <mat-icon><i class="material-icons">add_shopping_cart</i></mat-icon>
+          cart
+        </button>
+        <button mat-button *ngIf='!checkSeller()' (click)="addItem(product);openDialog()" >
+            <mat-icon><i class="material-icons">shopping_basket</i></mat-icon>
+            buy
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-card-content>
+</mat-card>
 
