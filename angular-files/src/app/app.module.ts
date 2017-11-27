@@ -36,6 +36,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CartComponent } from './components/cart/cart.component';
 import { BuyBillComponent } from './components/buy-bill/buy-bill.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 import {AuthService} from './services/auth.service';
 import {ValidateService} from './services/validate.service';
@@ -77,6 +78,7 @@ const routes: Routes = [
     ProductDetailComponent,
     CartComponent,
     BuyBillComponent,
+    FooterComponent,
 
     
 
