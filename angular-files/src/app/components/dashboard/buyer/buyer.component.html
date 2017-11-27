@@ -1,26 +1,26 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav class="sub-sidenav" mode='side' opened="{{!isMobileView}}"
+  <mat-sidenav #sidenav class="sub-sidenav" mode={{side}} opened="{{!isMobileView}}"
   fxLayout="column">  
       <div class="profile-container">
           <div>
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/atom_profile_01.jpg">
+              <img src="data:image/png;base64,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">
               <div class="name-text">
-                <p>Keith</p>
-                <p class="email">asdf@adf.com</p>
+                <p>{{authService.user.name}}</p>
+                <p class="email">{{authService.user.email}}</p>
               </div>
           </div>
       </div>
-      <button mat-button>
+      <button mat-button routerLink="/cart">
           <i class="material-icons">shopping_cart</i>cart
       </button>
       <button mat-button>
-          history
+            <i class="material-icons">history</i>history
       </button>
       <button mat-button>
-          edit address
+            <i class="material-icons">location_city</i>edit address
       </button>
       <button mat-button>
-          edit profile
+            <i class="material-icons">person_add</i>edit profile
       </button>
   </mat-sidenav>
 

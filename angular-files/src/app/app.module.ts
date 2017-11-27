@@ -44,6 +44,7 @@ import {ToastService} from './services/toast.service';
 import {AuthGuard} from './guards/auth.guard';
 import {ProductService} from './services/product.service';
 import {CartService} from './services/cart.service';
+import { PipePipe } from './pipe.pipe';
 
 
 
@@ -79,6 +80,7 @@ const routes: Routes = [
     CartComponent,
     BuyBillComponent,
     FooterComponent,
+    PipePipe,
 
     
 

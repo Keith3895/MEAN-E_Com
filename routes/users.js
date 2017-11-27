@@ -49,7 +49,8 @@ router.post('/authenticate',(req,res,next)=>{
 						_id:user._id,
 						buyer:user.buyer,
 						name:user.name,
-						username:user.username
+						username:user.username,
+						email:user.email
 					}
 				});
 			}else{

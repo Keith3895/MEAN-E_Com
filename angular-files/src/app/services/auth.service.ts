@@ -56,6 +56,8 @@ export class AuthService {
   logout(){
     this.authToken = null;
     this.user = null;
+    // this.cartService.cartContent=[];
+    // this.cartService.Total=this.cartService.GTotal=0;
     localStorage.clear();
   }
   getProfile(){

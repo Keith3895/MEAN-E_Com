@@ -6,6 +6,8 @@ import { CartService} from '../../services/cart.service';
 import {AuthService} from '../../services/auth.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { BuyBillComponent } from '../buy-bill/buy-bill.component';
+import { PipePipe } from '../../pipe.pipe';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-seller',
@@ -8,7 +9,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class SellerComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public authService : AuthService
+  ) { }
 
   ngOnInit() {
   }

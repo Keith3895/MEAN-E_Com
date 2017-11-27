@@ -1,34 +1,63 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav class="example-sidenav" mode='side' opened="{{!isMobileView}}">  
-            <ul class="side-nav-btn">
-                    <li routerLink="/addProduct">
-                        <i class="material-icons">add</i>
-                      <p>add Product</p>
-                    </li>
-                    <li>
-                        <i class="material-icons">mode_edit</i>
-                        <p>Edit Product</p>
-                    </li>
-                    <li>
-                        <i class="material-icons">system_update_alt</i>
-                        <p>update Stock</p>
-                    </li>
-                    <li>
-                        <i class="material-icons">person_add</i>
-                        <p>Edit User Profile</p>
-                    </li>
-                  </ul>
-        
+    <mat-sidenav #sidenav class="sub-sidenav" mode='side' opened="{{!isMobileView}}"
+    fxLayout="column">  
+        <div class="profile-container">
+            <div>
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/atom_profile_01.jpg">
+                <div class="name-text">
+                    <p>{{authService.user.name}}</p>
+                    <p class="email">{{authService.user.email}}</p>
+                </div>
+            </div>
+        </div>
+        <button mat-button routerLink="/addProduct">
+            <i class="material-icons">shopping_cart</i>Add Product
+        </button>
+        <button mat-button>
+                <i class="material-icons">history</i>history
+          </button>
+          <button mat-button>
+                <i class="material-icons">location_city</i>edit address
+          </button>
+          <button mat-button>
+                <i class="material-icons">person_add</i>edit profile
+          </button>
     </mat-sidenav>
   
     <div class="example-sidenav-content">  
-      <div>
+      <div style="position: fixed;z-index: 999;">
           <mat-icon (click)="sidenav.toggle(hide);hide=!hide;" >
             <i class="material-icons" *ngIf='hide'>view_headline</i>   
             <i class="material-icons" *ngIf='!hide' >close</i>     
           </mat-icon>
       </div>
-    </div>
   
+  
+      <div fxLayout='row'  >
+          <mat-card fxFlex='60%' >
+              <mat-card-title>
+                 Recent added
+              </mat-card-title>
+              <mat-card-content fxLayout='row' fxLayoutWrap="wrap">
+                  
+                  <a href="">more>></a>
+              </mat-card-content>
+          </mat-card>
+          <mat-card fxFlex='30%'>
+              <mat-card-title>
+                  History
+              </mat-card-title>
+              <mat-card-content>
+                  <mat-list>
+                      <mat-list-item>Item 1</mat-list-item>
+                      <mat-list-item>Item 2</mat-list-item>
+                      <mat-list-item>Item 3</mat-list-item>
+                  </mat-list>
+              </mat-card-content>
+          </mat-card>
+      </div>
+  
+    </div>
+  <app-footer></app-footer>
   </mat-sidenav-container>
   
