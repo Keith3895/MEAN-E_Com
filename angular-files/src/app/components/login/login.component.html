@@ -1,11 +1,11 @@
-
- <mat-card fxLayout="column">
- 	<mat-card-title fxFlexAlign='center'>
+<div fxLayout="column" fxFlexAlign='center center' >
+ <mat-card fxLayout="column" fxFlexAlign='center' >
+ 	<mat-card-title fxFlexAlign='auto' fxFlex='100%' fxFlexAlign='center'>
  		Login:
  	</mat-card-title>
  	<form fxLayout="column" fxLayoutGap="20px"
  	 fxLayoutWrap fxFlex='basis' fxFlexAlign='center'
- 	  fxFlex='1 1 auto' 
+ 	  fxFlex='100%' 
  	  #loginForm='ngForm' (ngSubmit)="onLogin(loginForm)">
  		<mat-form-field >
 		    <input matInput placeholder="Enter your UserName" type='text'
@@ -20,3 +20,4 @@
  	</form>	
  </mat-card>
  
+</div>
