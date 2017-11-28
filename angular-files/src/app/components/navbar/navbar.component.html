@@ -33,21 +33,33 @@
   </mat-toolbar>
 <mat-sidenav-container fxFlexFill class="side-container">
 
-  <mat-sidenav #sidenav class="sidenav" align='end' >
-    <div fxLayout="column">
-      <button mat-button color="secondary" routerLink="/">Home</button>
-      <button mat-button color="secondary" routerLink="/dashboard">DashBoard</button>
-      <button mat-button color="secondary" routerLink="/cart">
-        <i class="material-icons">shopping_cart</i>
-      </button>
-      <button mat-button color="secondary" routerLink="/login"
-      *ngIf="!authService.loggedIn()" >Login</button>
-      <button mat-button color="secondary" routerLink="/register"
-      *ngIf="!authService.loggedIn()" >Register</button>
-      <button mat-button color="secondary"
-      *ngIf="authService.loggedIn()" (click)="onLogout()">Logout</button>
-    </div>
-  </mat-sidenav>
+    <mat-sidenav #sidenav class="sub-sidenav" mode={{side}}
+    fxLayout="column" align='end' fxLayoutAlign='start'>  
+        <div class="profile-container" >
+            <div *ngIf='authService.user'>
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/atom_profile_01.jpg">
+                <div class="name-text" >
+                    <p>{{authService.user.name}}</p>
+                    <p class="email">{{authService.user.email}}</p>
+                </div>
+            </div>
+        </div>
+        <button mat-button color="secondary" routerLink="/home" 
+        routerLinkActive="active" (click)='sidenav.toggle()'>Home</button>
+        <button mat-button color="secondary" routerLink="/dashboard" 
+        routerLinkActive="active" (click)='sidenav.toggle()'>DashBoard</button>
+        <button mat-button color="secondary" routerLink="/cart" 
+        routerLinkActive="active" (click)='sidenav.toggle()'>
+            <i class="material-icons">shopping_cart</i>
+        </button>
+        <button mat-button color="secondary" routerLink="/login"
+        *ngIf="!authService.loggedIn()" routerLinkActive="active" (click)='sidenav.toggle()'>Login</button>
+        <button mat-button color="secondary" routerLink="/register"
+        *ngIf="!authService.loggedIn()" 
+        routerLinkActive="active"  (click)='sidenav.toggle()'>Register</button>
+        <button mat-button color="secondary"
+        *ngIf="authService.loggedIn()" (click)="onLogout();sidenav.toggle()">Logout</button>
+    </mat-sidenav>
   
   <router-outlet></router-outlet>
 </mat-sidenav-container>

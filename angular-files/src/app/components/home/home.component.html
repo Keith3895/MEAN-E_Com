@@ -1,14 +1,13 @@
-<div fxLayout='row' fxLayoutWrap='wrap'>
-  <mat-form-field fxFlex='100%' style='margin:3px 5px;'>
-    <input matInput placeholder="Search" type="text" [(ngModel)]="queryString" >
-    <mat-icon matSuffix><i class="material-icons">search</i></mat-icon>
-  </mat-form-field>
-</div>
+
 <mat-card>
   <mat-card-title>
     List of items
   </mat-card-title>
-  <mat-card-content fxLayout="row" fxLayoutWrap="wrap" *ngIf='products' >
+  <mat-card-content fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" *ngIf='products' >
+      <mat-form-field fxFlex='100%' style='margin:3px 5px;'>
+          <input matInput placeholder="Search" type="text" [(ngModel)]="queryString" >
+          <mat-icon matSuffix><i class="material-icons">search</i></mat-icon>
+        </mat-form-field>
     <mat-card  fxFlex.xs='100%' fxFlex="25%" 
     *ngFor='let product of products | pipe:queryString'>
       <mat-card-header>
