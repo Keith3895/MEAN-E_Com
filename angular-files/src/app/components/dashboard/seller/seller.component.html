@@ -1,38 +1,6 @@
-<mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav class="sub-sidenav" mode='side' opened="{{!isMobileView}}"
-    fxLayout="column">  
-        <div class="profile-container">
-            <div>
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/atom_profile_01.jpg">
-                <div class="name-text">
-                    <p>{{authService.user.name}}</p>
-                    <p class="email">{{authService.user.email}}</p>
-                </div>
-            </div>
-        </div>
-        <button mat-button routerLink="/addProduct">
-            <i class="material-icons">shopping_cart</i>Add Product
-        </button>
-        <button mat-button>
-                <i class="material-icons">history</i>history
-          </button>
-          <button mat-button>
-                <i class="material-icons">location_city</i>edit address
-          </button>
-          <button mat-button>
-                <i class="material-icons">person_add</i>edit profile
-          </button>
-    </mat-sidenav>
+
   
-    <div class="example-sidenav-content">  
-      <div style="position: fixed;z-index: 999;">
-          <mat-icon (click)="sidenav.toggle(hide);hide=!hide;" >
-            <i class="material-icons" *ngIf='hide'>view_headline</i>   
-            <i class="material-icons" *ngIf='!hide' >close</i>     
-          </mat-icon>
-      </div>
-  
-  
+   
       <div fxLayout='row'  >
           <mat-card fxFlex='60%' >
               <mat-card-title>
@@ -56,8 +24,7 @@
               </mat-card-content>
           </mat-card>
       </div>
-  
-    </div>
+      <button mat-fab color="warn" routerLink='/addProduct'><i class="material-icons">add</i></button>
   <app-footer></app-footer>
-  </mat-sidenav-container>
+
   

@@ -1,4 +1,4 @@
-
+<div style="padding:10%">
  <mat-card fxLayout="column">
  	<mat-card-title fxFlexAlign='center'>
  		Register
@@ -39,10 +39,12 @@
 		    [(ngModel)]="reEnterPassword" name="reEnterPassword">
 		    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
 		</mat-form-field>
-		<div fxFlexAlign='center' fxLayout='row' fxFlex='100%'>
-			<button fxFlex mat-raised-button> Submit</button>
+		<div fxFlexAlign='center' >
+			<button fxFlex mat-raised-button color='accent'> Submit</button>
 		</div>
 		
  	</form>	
  </mat-card>
  
+</div>
+<app-footer></app-footer>
