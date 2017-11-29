@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
-  hide = true;
+	hide = true;
   constructor(
   	private toastService: ToastService,
   	private authService:AuthService,

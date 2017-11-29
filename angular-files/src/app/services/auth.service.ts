@@ -48,7 +48,7 @@ export class AuthService {
 
   loggedIn(){
     // console.log(this.authToken);
-    // this.loadToken();
+    this.loadToken();
     // console.log();
     return tokenNotExpired('id_token');    
   }

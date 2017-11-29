@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
     public media:ObservableMedia) { }
 
   ngOnInit() {
+    // this.authService.user=false;
     this.isMobileView = (this.media.isActive('xs') || this.media.isActive('sm'));
     this.media.subscribe((change:MediaChange) => {
       this.isMobileView = (change.mqAlias === 'xs' || change.mqAlias === 'sm');

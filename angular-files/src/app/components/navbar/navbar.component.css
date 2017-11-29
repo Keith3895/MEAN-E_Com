@@ -2,7 +2,7 @@
     position: absolute !important;
     height: 100%;
     width: 100%;
-    margin-top:64px !important; 
+    padding-top:64px !important; 
 }
 .mat-toolbar{
     position: fixed;
@@ -16,7 +16,7 @@
 }
 @media (max-width: 600px){
 .side-container{
-    margin-top:55px !important; 
+    padding-top:55px !important; 
 }	
 }
 

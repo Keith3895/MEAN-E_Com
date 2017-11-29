@@ -36,7 +36,7 @@
     <mat-sidenav #sidenav class="sub-sidenav" mode={{side}}
     fxLayout="column" align='end' fxLayoutAlign='start'>  
         <div class="profile-container" >
-            <div *ngIf='authService.user'>
+            <div *ngIf='authService.loggedIn()'>
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/atom_profile_01.jpg">
                 <div class="name-text" >
                     <p>{{authService.user.name}}</p>

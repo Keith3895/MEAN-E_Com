@@ -6,7 +6,8 @@ import {AuthService} from './auth.service';
 @Injectable()
 export class CartService {
   cartContent: Cart[]=[];
-  Total=0;GTotal=0;
+  Total:Number=0;
+  GTotal:Number=0;
   constructor(
     private authService : AuthService,
     private http:Http
@@ -17,13 +18,15 @@ export class CartService {
       product:product,
       quantity: qty,
       Price:product.price};
-      this.Total +=product.price;
-      this.GTotal=this.Total;
+      // this.Total +=product.price;
+      // this.GTotal=this.Total;
     
     if(this.authService.loggedIn()){
       this.retriveCart().subscribe(data=>{
         if(data.success){
           this.cartContent=data.msg;
+
+          
           console.log(data.msg);
         }
       });
